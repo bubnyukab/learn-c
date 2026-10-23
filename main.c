@@ -1,29 +1,23 @@
 #include <stdbool.h>
 #include <stdio.h>
-#include <time.h>
 #include <unistd.h>
 
 int main() {
 
-  // DIGITAL CLOCK
+  // Reverse a string in C
 
-  time_t rawtime = 0; // Jan 1 1970 (Epoch)
-  struct tm *pTime = NULL;
-  bool isRunning = true;
+  char word[] = "I DID IT!";
+  int len = sizeof(word) - 2;
+  char temp = '\0';
 
-  printf("DIGITAL CLOCK\n");
-
-  while (isRunning) {
-
-    time(&rawtime);
-
-    pTime = localtime(&rawtime);
-
-    printf("\r%02d:%02d:%02d", pTime->tm_hour, pTime->tm_min, pTime->tm_sec);
-    fflush(stdout);
-
-    sleep(1);
+  for (int i = 0; i < len / 2; i++) {
+    temp = word[len - i];
+    word[len - i] = word[i];
+    word[i] = temp;
   }
+
+  printf("%s\n", word);
+  printf("%d\n", len);
 
   return 0;
 }
